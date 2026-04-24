@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mariela Fraijo — Creadora UGC & Content Creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F4EF;
+    --cream-2:#EFE8DE;
+    --ink:#141414;
+    --ink-soft:#3a3631;
+    --muted:#8a8278;
+    --red:#CC1F1F;
+    --red-deep:#A11616;
+    --line:#1414141a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--cream);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;}
+  body{overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  .serif{font-family:'Playfair Display',serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .italic{font-style:italic}
+
+  /* ============ TOP NAV ============ */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 48px;
+    mix-blend-mode:difference;color:#fff;
+    pointer-events:none;
+  }
+  .nav > *{pointer-events:auto}
+  .nav .mark{font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.02em;font-size:18px}
+  .nav .mark em{font-style:italic;font-weight:400}
+  .nav .links{display:flex;gap:28px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;font-family:'JetBrains Mono',monospace}
+  .nav .links a{opacity:.85;transition:opacity .2s}
+  .nav .links a:hover{opacity:1}
+  .nav .loc{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;opacity:.85}
+
+  /* ============ SECTION CHROME ============ */
+  section{position:relative;padding:120px 48px}
+  .section-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--muted);
+    display:flex;align-items:center;gap:14px;
+  }
+  .section-tag .num{color:var(--red);font-weight:500}
+  .section-tag .bar{flex:0 0 48px;height:1px;background:currentColor;opacity:.4}
+
+  .container{max-width:1440px;margin:0 auto}
+
+  /* ============ HERO ============ */
+  .hero{
+    min-height:100vh;padding:100px 48px 48px;
+    display:flex;flex-direction:column;
+    position:relative;overflow:hidden;
+  }
+  .hero-meta{
+    display:grid;grid-template-columns:1fr 1fr;gap:24px;
+    padding-bottom:12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink);
+    position:relative;z-index:3;
+  }
+  .hero-meta .right{text-align:right}
+
+  .hero-stage{
+    flex:1;position:relative;
+    display:flex;align-items:center;justify-content:center;
+    min-height:560px;
+  }
+  .hero-photo-bg{
+    position:absolute;inset:0;z-index:2;
+    display:flex;align-items:flex-end;justify-content:center;
+    pointer-events:none;
+  }
+  .hero-photo-bg img{
+    height:100%;width:auto;max-height:88vh;
+    object-fit:contain;object-position:bottom center;
+    animation:floatIn 1.6s cubic-bezier(.2,.7,.2,1) .2s both;
+    filter:drop-shadow(0 28px 40px #00000018);
+  }
+  .hero-title{
+    font-family:'Playfair Display',serif;font-weight:900;
+    font-size:clamp(110px, 22vw, 340px);
+    line-height:.88;letter-spacing:-0.045em;
+    color:var(--red);text-align:center;
+    position:relative;z-index:1;margin:0;width:100%;
+  }
+  .hero-title .l{display:block}
+
+  .hero-foot{
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:end;
+    padding-top:24px;margin-top:24px;
+    border-top:1px solid var(--line);
+    position:relative;z-index:3;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);
+  }
+  .hero-foot .col.center{text-align:center}
+  .hero-foot .col.right{text-align:right}
+  .hero-foot .label{color:var(--muted);display:block;margin-bottom:6px;font-size:10px;letter-spacing:.24em}
+  .hero-foot .ig{text-decoration:underline;text-underline-offset:3px}
+  .hero-foot .serif{
+    font-family:'Playfair Display',serif;font-style:italic;
+    font-size:14px;letter-spacing:0;text-transform:none;color:var(--ink);margin-top:6px;
+  }
+  .hero-cta{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+  @keyframes floatIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  .btn-red{
+    display:inline-flex;align-items:center;gap:14px;
+    background:var(--red);color:#fff;
+    padding:20px 28px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;
+    transition:background .25s ease, transform .25s ease;
+    border:none;cursor:pointer;
+  }
+  .btn-red:hover{background:var(--red-deep);transform:translateY(-2px)}
+  .btn-red .arrow{width:18px;height:1px;background:#fff;position:relative;transition:width .25s}
+  .btn-red .arrow::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:1px solid #fff;border-right:1px solid #fff;transform:rotate(45deg)}
+  .btn-red:hover .arrow{width:28px}
+  .hero-cta .note{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+  /* vertical scroll indicator */
+  .scroll-ind{
+    position:absolute;right:48px;bottom:56px;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+    writing-mode:vertical-rl;transform:rotate(180deg);
+  }
+  .scroll-ind::before{content:"";width:1px;height:36px;background:var(--ink);opacity:.4;animation:drip 1.6s ease-in-out infinite;}
+  @keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  /* ============ MARQUEE ============ */
+  .marquee{
+    padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    overflow:hidden;white-space:nowrap;
+  }
+  .marquee .track{display:inline-flex;gap:48px;animation:scroll 32s linear infinite;font-family:'Playfair Display',serif;font-style:italic;font-size:28px;color:var(--ink-soft)}
+  .marquee .track span{display:inline-flex;align-items:center;gap:48px}
+  .marquee .track .dot{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ============ STATS ============ */
+  .stats{padding:140px 48px}
+  .stats-grid{
+    display:grid;grid-template-columns:1fr 1fr 1fr;
+    border-top:1px solid var(--ink);
+  }
+  .stat{
+    padding:48px 32px 32px 0;
+    border-right:1px solid var(--line);
+    display:flex;flex-direction:column;gap:20px;
+  }
+  .stat:last-child{border-right:none}
+  .stat .n{
+    font-family:'Playfair Display',serif;font-weight:900;
+    font-size:clamp(64px,8vw,140px);line-height:.9;letter-spacing:-0.03em;
+  }
+  .stat .n sup{font-size:.3em;vertical-align:top;color:var(--red);margin-left:6px;font-weight:500;letter-spacing:0}
+  .stat .label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft)}
+  .stat .desc{font-size:14px;color:var(--muted);max-width:280px;line-height:1.5}
+
+  /* ============ SOBRE MI ============ */
+  .about{padding:160px 48px;position:relative}
+  .about-grid{
+    display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:start;
+  }
+  .about .portrait{
+    aspect-ratio:3/4;
+    background:var(--cream-2);
+    position:relative;overflow:hidden;
+  }
+  .about .portrait .cap{color:#fff !important;text-shadow:0 1px 12px #0008;z-index:2}
+  .about .portrait .placeholder{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);
+  }
+  .about .portrait .ph-frame{width:40%;aspect-ratio:1;border:1px dashed var(--muted);opacity:.6}
+  .about .portrait .cap{
+    position:absolute;left:20px;bottom:20px;right:20px;
+    display:flex;justify-content:space-between;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  }
+  .about h2{
+    font-family:'Playfair Display',serif;font-weight:400;
+    font-size:clamp(44px,5.4vw,88px);line-height:1;letter-spacing:-0.02em;
+    margin:32px 0 48px;
+  }
+  .about h2 em{color:var(--red);font-style:italic;font-weight:400}
+  .about .lede{
+    font-family:'Playfair Display',serif;font-style:italic;font-weight:400;
+    font-size:clamp(22px,2.2vw,30px);line-height:1.35;color:var(--ink);
+    padding-left:28px;border-left:2px solid var(--red);
+    margin-bottom:40px;max-width:560px;
+  }
+  .about p{font-size:16px;line-height:1.7;color:var(--ink-soft);max-width:540px;margin-bottom:22px;font-weight:300}
+  .about .tags{
+    display:flex;flex-wrap:wrap;gap:8px;margin-top:32px;
+  }
+  .about .tags span{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+    padding:8px 14px;border:1px solid var(--ink);color:var(--ink);
+  }
+
+  /* ============ SERVICIOS ============ */
+  .services{padding:160px 0 0;background:var(--ink);color:var(--cream);position:relative}
+  .services .inner{padding:0 48px}
+  .services .section-tag{color:#ffffff66}
+  .services .section-tag .num{color:var(--red)}
+  .services h2{
+    font-family:'Playfair Display',serif;font-weight:400;
+    font-size:clamp(56px,7vw,120px);line-height:.95;letter-spacing:-0.03em;
+    margin:32px 0 80px;max-width:14ch;
+  }
+  .services h2 em{font-style:italic;color:var(--red)}
+  .svc-grid{
+    display:grid;grid-template-columns:1fr;gap:2px;background:#ffffff18;
+    margin-top:40px;
+  }
+  /* ============ SERVICIOS (redesigned) ============ */
+  .svc{
+    background:var(--ink);
+    padding:72px 56px;
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:56px;
+    align-items:center;
+    min-height:700px;
+    position:relative;
+  }
+  .svc-text{display:flex;flex-direction:column;gap:22px;min-width:0}
+  .svc .n{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.3em;color:var(--red);text-transform:uppercase}
+  .svc h3{
+    font-family:'Playfair Display',serif;font-weight:400;
+    font-size:clamp(34px,3.6vw,54px);line-height:1.02;letter-spacing:-0.02em;
+  }
+  .svc h3 em{font-style:italic;color:var(--red)}
+  .svc .blurb{font-size:15px;line-height:1.65;color:#ffffffb0;max-width:460px;font-weight:300}
+  .svc ul{list-style:none;margin-top:16px;padding-top:28px;border-top:1px solid #ffffff20}
+  .svc ul li{
+    font-size:13px;line-height:1.6;color:#ffffffd0;
+    padding:10px 0;border-bottom:1px solid #ffffff10;
+    display:grid;grid-template-columns:100px 1fr;gap:16px;align-items:baseline;
+  }
+  .svc ul li:last-child{border-bottom:none}
+  .svc ul li b{color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+
+  /* video placeholder — single elegant 9:16 unit */
+  .svc-media{
+    position:relative;align-self:center;justify-self:center;
+    width:100%;max-width:340px;aspect-ratio:9/16;
+    background:
+      repeating-linear-gradient(45deg, #1d1d1d 0 24px, #181818 24px 48px);
+    border:1px solid #ffffff1a;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:transform .4s cubic-bezier(.2,.7,.2,1), border-color .4s;
+  }
+  .svc:hover .svc-media{transform:translateY(-6px);border-color:#ffffff35}
+  .svc-media::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse at 50% 25%, #ffffff10 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 85%, #00000060 0%, transparent 60%);
+    pointer-events:none;z-index:1;
+  }
+  .svc-media .m-top{
+    position:relative;z-index:2;
+    padding:16px 18px;display:flex;justify-content:space-between;align-items:center;
+    font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.26em;text-transform:uppercase;
+    color:#ffffff85;
+  }
+  .svc-media .m-top .lbl{
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .svc-media .m-top .lbl::before{
+    content:"";width:6px;height:6px;border-radius:50%;background:var(--red);
+    box-shadow:0 0 0 0 #cc1f1f;animation:mediaDot 1.8s ease-out infinite;
+  }
+  @keyframes mediaDot{0%{box-shadow:0 0 0 0 #cc1f1fcc}100%{box-shadow:0 0 0 8px #cc1f1f00}}
+  .svc-media .m-center{
+    flex:1;position:relative;z-index:2;
+    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;
+  }
+  .svc-media .m-play{
+    width:74px;height:74px;border-radius:50%;
+    background:#ffffff0d;backdrop-filter:blur(4px);
+    border:1px solid #ffffff30;
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .35s ease, background .35s ease, border-color .35s;
+  }
+  .svc:hover .svc-media .m-play{background:var(--red);border-color:var(--red);transform:scale(1.08)}
+  .svc-media .m-play::after{
+    content:"";
+    border-left:16px solid #fff;
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    margin-left:5px;
+  }
+  .svc-media .m-caption{
+    text-align:center;
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+    color:#ffffff70;
+  }
+  .svc-media .m-caption b{display:block;color:#fff;font-weight:500;margin-bottom:4px;font-size:11px;letter-spacing:.24em}
+  .svc-media .m-bottom{
+    position:relative;z-index:2;
+    padding:14px 18px 16px;
+    display:flex;justify-content:space-between;align-items:center;
+    border-top:1px solid #ffffff15;
+    font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.24em;text-transform:uppercase;
+    color:#ffffff70;
+  }
+  .svc-media .m-scrub{
+    flex:1;margin:0 14px;height:2px;background:#ffffff18;position:relative;
+  }
+  .svc-media .m-scrub::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:34%;background:var(--red);
+    animation:scrub 5.5s cubic-bezier(.4,0,.2,1) infinite;
+  }
+  @keyframes scrub{0%{width:0%}100%{width:100%}}
+  .svc-media .m-corner{
+    position:absolute;z-index:3;width:14px;height:14px;
+  }
+  .svc-media .m-corner::before,.svc-media .m-corner::after{content:"";position:absolute;background:#ffffff50}
+  .svc-media .m-corner::before{top:0;left:0;width:100%;height:1px}
+  .svc-media .m-corner::after{top:0;left:0;width:1px;height:100%}
+  .svc-media .m-c-tl{top:8px;left:8px}
+  .svc-media .m-c-tr{top:8px;right:8px;transform:scaleX(-1)}
+  .svc-media .m-c-bl{bottom:8px;left:8px;transform:scaleY(-1)}
+  .svc-media .m-c-br{bottom:8px;right:8px;transform:scale(-1,-1)}
+
+  .svc:nth-child(2){grid-template-columns:1fr 1.1fr}
+  .svc:nth-child(2) .svc-text{order:2}
+  .svc:nth-child(2) .svc-media{order:1}
+
+  @media (max-width: 900px){
+    .svc{grid-template-columns:1fr !important;gap:40px;padding:48px 24px;min-height:0}
+    .svc .svc-media, .svc .svc-text{order:initial}
+    .svc-media{max-width:280px}
+  }
+
+  /* ============ PRECIOS ============ */
+  .pricing{padding:160px 48px;background:var(--cream-2)}
+  .pricing .head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:80px}
+  .pricing h2{
+    font-family:'Playfair Display',serif;font-weight:400;
+    font-size:clamp(56px,7vw,120px);line-height:.95;letter-spacing:-0.03em;
+  }
+  .pricing h2 em{font-style:italic;color:var(--red)}
+  .pricing .intro{font-family:'Playfair Display',serif;font-style:italic;font-size:22px;line-height:1.4;color:var(--ink-soft);max-width:420px;text-align:left}
+  .pricing .curr{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:12px;display:inline-block}
+
+  .tab{margin-bottom:64px}
+  .tab-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding-bottom:20px;border-bottom:2px solid var(--ink);margin-bottom:0;
+  }
+  .tab-head h3{
+    font-family:'Playfair Display',serif;font-weight:500;font-size:28px;letter-spacing:-0.01em;
+  }
+  .tab-head .cat{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+  .row{
+    display:grid;grid-template-columns:60px 1fr 1.2fr auto;gap:32px;align-items:center;
+    padding:24px 0;border-bottom:1px solid var(--line);
+    transition:background .2s;
+  }
+  .row:hover{background:#0000000a;padding-left:12px}
+  .row .idx{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--muted)}
+  .row .name{font-family:'Playfair Display',serif;font-size:22px;font-weight:500;letter-spacing:-0.01em}
+  .row .name em{font-style:italic;color:var(--red);font-weight:400}
+  .row .spec{font-size:13px;color:var(--muted);line-height:1.5;max-width:420px}
+  .row-badge{
+    font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.24em;text-transform:uppercase;
+    padding:6px 14px;border:1px solid var(--line);color:var(--muted);white-space:nowrap;align-self:center;
+  }
+  .row.feature .name{color:var(--red)}
+  .row.feature .row-badge{border-color:var(--red);color:var(--red)}
+
+  .pkg-row{
+    display:grid;grid-template-columns:60px 1fr auto;gap:32px;align-items:baseline;
+    padding:22px 0;border-bottom:1px solid var(--line);
+  }
+  .pkg-row:hover{background:#0000000a}
+
+  .live-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  .live-card{
+    background:var(--cream);padding:40px 36px;
+    border:1px solid var(--line);
+    display:flex;flex-direction:column;gap:18px;
+    position:relative;
+  }
+  .live-card .tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.28em;color:var(--red);text-transform:uppercase}
+  .live-card h4{font-family:'Playfair Display',serif;font-weight:500;font-size:26px;line-height:1.2;letter-spacing:-0.01em}
+  .live-card .big{font-family:'Playfair Display',serif;font-weight:700;font-size:72px;line-height:1;letter-spacing:-0.03em;margin-top:16px}
+  .live-card .big small{font-size:14px;font-weight:400;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.14em;margin-left:6px}
+  .live-card .breakdown{
+    display:flex;justify-content:space-between;padding-top:20px;margin-top:auto;border-top:1px solid var(--line);
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .live-card .breakdown b{color:var(--ink);font-weight:500}
+
+  .conds{margin-top:56px;padding-top:32px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+  .conds div{font-size:12px;color:var(--ink-soft);line-height:1.6;font-family:'JetBrains Mono',monospace;letter-spacing:.02em}
+  .conds div b{display:block;color:var(--red);font-weight:500;letter-spacing:.22em;text-transform:uppercase;font-size:10px;margin-bottom:10px}
+
+  /* ============ CTA STRIP ============ */
+  .cta-strip{
+    padding:140px 48px;text-align:center;background:var(--red);color:#fff;
+    position:relative;overflow:hidden;
+  }
+  .cta-strip .figure{
+    position:absolute;top:50%;transform:translateY(-50%);
+    pointer-events:none;opacity:.85;
+    mix-blend-mode:multiply;
+  }
+  .cta-strip .figure.left{left:-4vw;height:80%;}
+  .cta-strip .figure.right{right:-4vw;height:80%;}
+  .cta-strip .figure img{height:100%;width:auto;filter:grayscale(1) contrast(.9)}
+  .cta-strip .container{position:relative;z-index:2}
+  @media (max-width: 900px){.cta-strip .figure{display:none}}
+  .cta-strip .section-tag{color:#ffffff99;justify-content:center}
+  .cta-strip .section-tag .num{color:#fff}
+  .cta-strip h2{
+    font-family:'Playfair Display',serif;font-weight:400;
+    font-size:clamp(56px,9vw,160px);line-height:.95;letter-spacing:-0.03em;margin:32px auto 48px;
+    max-width:14ch;
+  }
+  .cta-strip h2 em{font-style:italic;font-weight:400;opacity:.85}
+  .btn-outline{
+    display:inline-flex;align-items:center;gap:14px;
+    background:transparent;color:#fff;border:1px solid #fff;
+    padding:22px 36px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;
+    transition:background .25s,color .25s;
+  }
+  .btn-outline:hover{background:#fff;color:var(--red)}
+
+  /* ============ CONTACT ============ */
+  .contact{padding:160px 48px 64px;background:var(--cream)}
+  .contact h2{
+    font-family:'Playfair Display',serif;font-weight:400;
+    font-size:clamp(64px,10vw,180px);line-height:.9;letter-spacing:-0.04em;margin:32px 0 80px;
+  }
+  .contact h2 em{font-style:italic;color:var(--red);font-weight:400}
+  .contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+  .contact-grid > div{background:var(--cream);padding:36px 28px;display:flex;flex-direction:column;gap:14px;min-height:200px;transition:background .25s}
+  .contact-grid > div:hover{background:var(--cream-2)}
+  .contact-grid .label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  .contact-grid .val{font-family:'Playfair Display',serif;font-size:22px;line-height:1.2;letter-spacing:-0.01em;word-break:break-word;margin-top:auto}
+  .contact-grid .val em{font-style:italic;color:var(--red)}
+
+  /* Footer */
+  footer{padding:40px 48px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+  footer .mark{font-family:'Playfair Display',serif;font-weight:700;font-size:14px;letter-spacing:.02em;color:var(--ink);text-transform:none}
+
+  /* ============ FLOATING WHATSAPP ============ */
+  .fab{
+    position:fixed;right:28px;bottom:28px;z-index:60;
+    display:flex;align-items:center;gap:12px;
+    background:var(--ink);color:#fff;padding:14px 20px 14px 16px;
+    border-radius:100px;
+    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    box-shadow:0 12px 40px #1414143d;
+    transition:transform .25s ease, background .25s ease;
+  }
+  .fab:hover{background:var(--red);transform:translateY(-3px)}
+  .fab .pulse{position:relative;width:10px;height:10px;border-radius:50%;background:#22c55e;flex:0 0 10px}
+  .fab .pulse::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid #22c55e;animation:pulse 1.6s ease-out infinite}
+  @keyframes pulse{0%{transform:scale(.8);opacity:1}100%{transform:scale(1.8);opacity:0}}
+
+  /* ============ REVEAL ============ */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}
+  .reveal.d2{transition-delay:.16s}
+  .reveal.d3{transition-delay:.24s}
+  .reveal.d4{transition-delay:.32s}
+
+  @media (max-width: 900px){
+    .nav{padding:18px 20px}
+    .nav .links{display:none}
+    section, .hero, .stats, .about, .pricing, .contact, .cta-strip{padding-left:20px;padding-right:20px}
+    .services .inner{padding:0 20px}
+    .hero{padding-top:80px}
+    .hero-meta{grid-template-columns:1fr 1fr;gap:12px;padding-bottom:16px}
+    .hero-title{font-size:clamp(72px,18vw,120px) !important}
+    .hero-photo-bg img{max-height:60vh}
+    .hero-foot{grid-template-columns:1fr;gap:20px;text-align:left}
+    .hero-foot .col.center,.hero-foot .col.right{text-align:left}
+    .stats-grid{grid-template-columns:1fr}
+    .stat{border-right:none;border-bottom:1px solid var(--line);padding:32px 0}
+    .about-grid{grid-template-columns:1fr;gap:40px}
+    .svc-grid{grid-template-columns:1fr}
+    .pricing .head{grid-template-columns:1fr}
+    .row{grid-template-columns:32px 1fr auto;gap:16px}
+    .row .spec{display:none}
+    .pkg-row{grid-template-columns:32px 1fr auto;gap:16px}
+    .live-grid{grid-template-columns:1fr}
+    .conds{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr 1fr}
+    .scroll-ind{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="mark">Mariela <em>Fraijo</em></div>
+  <div class="links">
+    <a href="#sobre">Sobre mí</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#precios">Precios</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <div class="loc">MX</div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-meta reveal">
+    <div><span>PORTAFOLIO</span></div>
+    <div class="right"><span>2026</span></div>
+  </div>
+
+  <div class="hero-stage">
+    <h1 class="hero-title reveal d1" aria-label="Mariela Fraijo">
+      <span class="l" style="color: rgb(204, 31, 31)">MARIELA</span>
+      <span class="l" style="color: rgb(20, 20, 20)">FRAIJO</span>
+    </h1>
+    <div class="hero-photo-bg reveal d2" aria-hidden="true">
+      <img src="photos/p1-0.png" alt="" />
+    </div>
+  </div>
+
+  <div class="hero-foot reveal d3">
+    <div class="col">
+      <span class="label">CREADORA UGC<br/>&amp; CONTENT CREATOR</span>
+      <div style="margin-top:14px">
+        IG: <a class="ig" href="https://instagram.com/mayefraijo" target="_blank" rel="noopener">@MAYEFRAIJO</a><br/>
+        <span style="text-decoration:underline;text-underline-offset:3px">3,500 SEGUIDORES</span>
+      </div>
+    </div>
+    <div class="col center">
+      <a class="btn-red" href="#contacto">
+        Trabajemos juntos <span class="arrow"></span>
+      </a>
+    </div>
+    <div class="col right">
+      <span class="label">MÉXICO</span>
+      <div class="serif">Skincare, beauty &amp; lifestyle</div>
+      <div style="margin-top:10px">9,500 seguidores en TT</div>
+    </div>
+  </div>
+
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Skincare <i class="dot"></i> Beauty <i class="dot"></i> Lifestyle <i class="dot"></i> Maternidad <i class="dot"></i> Live Shopping <i class="dot"></i> UGC Orgánico <i class="dot"></i> UGC con Pauta <i class="dot"></i> TikTok <i class="dot"></i> Instagram <i class="dot"></i></span>
+    <span>Skincare <i class="dot"></i> Beauty <i class="dot"></i> Lifestyle <i class="dot"></i> Maternidad <i class="dot"></i> Live Shopping <i class="dot"></i> UGC Orgánico <i class="dot"></i> UGC con Pauta <i class="dot"></i> TikTok <i class="dot"></i> Instagram <i class="dot"></i></span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats" id="stats">
+  <div class="container">
+    <div class="section-tag reveal"><span class="num">01</span><span class="bar"></span>Comunidad en números</div>
+    <div class="stats-grid" style="margin-top:32px">
+      <div class="stat reveal d1">
+        <div class="n">3,500<sup>+</sup></div>
+        <div class="label">Instagram · @mayefraijo</div>
+        <div class="desc">Audiencia cercana en historias, reels y colaboraciones con marcas de belleza.</div>
+      </div>
+      <div class="stat reveal d2">
+        <div class="n">9,500<sup>+</sup></div>
+        <div class="label">TikTok Followers</div>
+        <div class="desc">Comunidad activa en formato vertical, con alto engagement en demostraciones de producto.</div>
+      </div>
+      <div class="stat reveal d3">
+        <div class="n">100<sup>%</sup></div>
+        <div class="label">Contenido Original</div>
+        <div class="desc">Concepto, guion, grabación y edición propios. Derechos para pauta disponibles.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MI -->
+<section class="about" id="sobre" style="padding: 0px 0px 160px">
+  <div class="container">
+    <div class="section-tag reveal"><span class="num">02</span><span class="bar"></span>Sobre mí</div>
+    <div class="about-grid" style="margin-top:40px">
+      <div class="portrait reveal d1">
+        <img src="photos/p6-0.png" alt="Retrato de Mariela Fraijo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;"/>
+        <div class="cap"><span>FIG. 01 — Mariela Fraijo</span><span>México</span></div>
+      </div>
+      <div class="reveal d2">
+        <h2>Mamá,Mujer. <em>Creadora.</em> <br/>Voz real.</h2>
+        <p class=”lede”>
+          “Menos filtros, más conexión. Hagamos que cada minuto de contenido valga la pena.”
+        </p>
+        <p>
+          Soy Mariela Fraijo, creadora de contenido especializada en <strong>skincare, beauty, lifestyle y maternidad</strong>. Desde México he construido una comunidad que se caracteriza por la cercanía y la credibilidad — personas reales que prueban, recomiendan y compran.
+        </p>
+        <p>
+          Creo contenido que se siente como una charla entre amigas pero con la calidad que tu marca merece. Mi meta es que la gente no solo vea un video, sino que se sienta identificada con tu marca. El mejor UGC no se ve como publicidad — se ve como una charla cotidiana compartiendo experiencias. Esa es la conversión que entrego.
+        </p>
+        <div class="tags">
+          <span>Skincare</span>
+          <span>Beauty</span>
+          <span>Lifestyle</span>
+          <span>Maternidad</span>
+          <span>Fitness</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="services" id="servicios">
+  <div class="inner container">
+    <div class="section-tag reveal"><span class="num">03</span><span class="bar"></span>Servicios</div>
+    <h2 class="reveal d1">Dos formatos. <em>Un mismo objetivo:</em> venta real.</h2>
+  </div>
+  <div class="inner container">
+    <div class="svc-grid">
+      <div class="svc reveal d1">
+        <div class="svc-text">
+          <div class="n">S/01 — UGC</div>
+          <h3>Contenido <em>UGC</em> <br/>vertical</h3>
+          <p class="blurb">Videos verticales de 15–45 segundos, grabados en casa o locación. Concepto, estructura, grabación, edición, subtítulos y música — todo incluido. Disponible para uso orgánico o con derechos para pauta.</p>
+          <ul>
+            <li><b>Duración</b><span>15–45 segundos · Formato 9:16</span></li>
+            <li><b>Entrega</b><span>3–5 días hábiles por video</span></li>
+            <li><b>Incluye</b><span>Guion, grabación, edición, subtítulos y música</span></li>
+            <li><b>Revisiones</b><span>1 ronda de ajustes ligeros</span></li>
+            <li><b>Paquetes</b><span>Disponibles en 3, 5 y 10 videos</span></li>
+          </ul>
+        </div>
+        <div class="svc-media" aria-label="Muestra de video UGC — placeholder">
+          <span class="m-corner m-c-tl"></span><span class="m-corner m-c-tr"></span>
+          <span class="m-corner m-c-bl"></span><span class="m-corner m-c-br"></span>
+          <div class="m-top">
+            <span class="lbl">REC</span>
+            <span>00:32</span>
+          </div>
+          <div class="m-center">
+            <div class="m-play"></div>
+            <div class="m-caption"><b>Reel · UGC</b>Muestra · 9:16</div>
+          </div>
+          <div class="m-bottom">
+            <span>01</span>
+            <div class="m-scrub"></div>
+            <span>HD</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc reveal d2">
+        <div class="svc-text">
+          <div class="n">S/02 — LIVE</div>
+          <h3>Live Shopping <br/>en <em>TikTok</em></h3>
+          <p class="blurb">El nuevo estándar de ventas para beauty. Transformo la experiencia de compra en un evento interactivo y humano que convierte en tiempo real, desde la cuenta de la marca o desde la mía.</p>
+          <ul>
+            <li><b>Set</b><span>Iluminación profesional y percepción premium</span></li>
+            <li><b>Host</b><span>Conducción enfocada en conversión</span></li>
+            <li><b>Equipo</b><span>Asistente de set + monitoreo en tiempo real</span></li>
+            <li><b>Modalidad</b><span>Cuenta de marca o cuenta de la creadora</span></li>
+            <li><b>Pago</b><span>50 % al apartar · 50 % al cierre</span></li>
+          </ul>
+        </div>
+        <div class="svc-media" aria-label="Muestra de Live Shopping — placeholder">
+          <span class="m-corner m-c-tl"></span><span class="m-corner m-c-tr"></span>
+          <span class="m-corner m-c-bl"></span><span class="m-corner m-c-br"></span>
+          <div class="m-top">
+            <span class="lbl">LIVE</span>
+            <span>48:12</span>
+          </div>
+          <div class="m-center">
+            <div class="m-play"></div>
+            <div class="m-caption"><b>TikTok · Live</b>Muestra · 9:16</div>
+          </div>
+          <div class="m-bottom">
+            <span>02</span>
+            <div class="m-scrub"></div>
+            <span>ON AIR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAQUETES -->
+<section class="pricing" id="precios">
+  <div class="container">
+    <div class="section-tag reveal"><span class="num">04</span><span class="bar"></span>Paquetes</div>
+    <div class="head">
+      <h2 class="reveal d1">Paquetes <em>disponibles</em></h2>
+      <div class="reveal d2">
+        <p class="intro">Formatos flexibles adaptados a lo que tu marca necesita. Contáctame para una cotización personalizada.</p>
+      </div>
+    </div>
+
+    <!-- UGC TABLE -->
+    <div class="tab reveal">
+      <div class="tab-head">
+        <h3>Videos Verticales UGC</h3>
+        <span class="cat">Formato 9:16 · 15–45 s</span>
+      </div>
+      <div class="row">
+        <span class="idx">01</span>
+        <span class="name">UGC Reel / TikTok</span>
+        <span class="spec">Uso orgánico · guion, grabación, edición, subtítulos y música incluidos</span>
+        <span class="row-badge">Orgánico</span>
+      </div>
+      <div class="row feature">
+        <span class="idx">02</span>
+        <span class="name">UGC Reel / TikTok <em>con pauta</em></span>
+        <span class="spec">Video editado + derechos de uso para anuncios pagados</span>
+        <span class="row-badge">Con pauta</span>
+      </div>
+
+      <div style="height:32px"></div>
+
+      <div class="tab-head" style="border-top:1px solid var(--line);padding-top:20px;margin-top:0;border-bottom:2px solid var(--ink)">
+        <h3 style="font-size:22px">Paquetes UGC</h3>
+        <span class="cat">Mayor volumen · mejor valor</span>
+      </div>
+      <div class="pkg-row">
+        <span class="idx">03</span>
+        <span class="name" style="font-size:18px">Pack · <b style="font-weight:500">3 videos</b></span>
+        <span class="row-badge">Esencial</span>
+      </div>
+      <div class="pkg-row">
+        <span class="idx">04</span>
+        <span class="name" style="font-size:18px">Pack · <b style="font-weight:500">5 videos</b></span>
+        <span class="row-badge">Popular</span>
+      </div>
+      <div class="pkg-row">
+        <span class="idx">05</span>
+        <span class="name" style="font-size:18px">Pack · <b style="font-weight:500">10 videos</b></span>
+        <span class="row-badge">Completo</span>
+      </div>
+    </div>
+
+    <!-- LIVE -->
+    <div class="tab reveal">
+      <div class="tab-head">
+        <h3>Live Shopping — TikTok</h3>
+        <span class="cat">Por hora efectiva de transmisión</span>
+      </div>
+      <div class="live-grid" style="margin-top:32px">
+        <div class="live-card">
+          <span class="tag">Modalidad A</span>
+          <h4>Desde la cuenta <em style="color:var(--red);font-style:italic">de la marca</em></h4>
+          <p style="font-size:14px;color:var(--muted);line-height:1.6">Operación completa, set profesional, host, asistente y monitoreo en vivo. Ideal para marcas que ya tienen audiencia en TikTok.</p>
+          <div class="breakdown">
+            <span>Disponible por horas o paquetes</span>
+            <b>Cotizar →</b>
+          </div>
+        </div>
+        <div class="live-card" style="border-color:var(--red);border-width:2px">
+          <span class="tag">Modalidad B</span>
+          <h4>Desde la cuenta <em style="color:var(--red);font-style:italic">de la creadora</em></h4>
+          <p style="font-size:14px;color:var(--muted);line-height:1.6">Accede a mi comunidad activa. Tarifa diferencial + comisión sobre ventas atribuibles al live.</p>
+          <div class="breakdown">
+            <span>Disponible por horas o paquetes</span>
+            <b>Cotizar →</b>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="conds reveal">
+      <div><b>Forma de pago</b>50 % para apartar fecha e iniciar preparación. 50 % al finalizar el servicio.</div>
+      <div><b>Entregas UGC</b>3–5 días hábiles por video según disponibilidad y recepción del producto.</div>
+      <div><b>Revisiones</b>1 ronda de ajustes ligeros incluida (texto, ritmo, cortes).</div>
+      <div><b>Cotización</b>Precios personalizados según campaña y producto. Escríbeme para tu propuesta.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <div class="figure left" aria-hidden="true"><img src="photos/p5-0.png" alt=""/></div>
+  <div class="figure right" aria-hidden="true"><img src="photos/p6-0.png" alt=""/></div>
+  <div class="container">
+    <div class="section-tag reveal">05 · Siguiente paso</div>
+    <h2 class="reveal d1">¿Listos para <em>crear juntos?</em></h2>
+    <a class="btn-outline reveal d2" href="https://wa.me/5216657999091" target="_blank" rel="noopener">
+      Iniciar conversación en WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="container">
+    <div class="section-tag reveal"><span class="num">06</span><span class="bar"></span>Contacto</div>
+    <h2 class="reveal d1">Empecemos — <em>Hagamos de tu marca un éxito.</em></h2>
+    <div class="contact-grid reveal d2">
+      <a href="https://wa.me/5216657999091" target="_blank" rel="noopener">
+        <div class="label">01 · WhatsApp</div>
+        <div class="val">665 799 <em>9091</em></div>
+      </a>
+      <a href="mailto:mariela.penagaxiola@gmail.com">
+        <div class="label">02 · Correo</div>
+        <div class="val">mariela.<em>penagaxiola</em>@gmail.com</div>
+      </a>
+      <a href="https://instagram.com/mayefraijo" target="_blank" rel="noopener">
+        <div class="label">03 · Instagram</div>
+        <div class="val"><em>@</em>mayefraijo</div>
+      </a>
+      <a href="#">
+        <div class="label">04 · TikTok</div>
+        <div class="val">9,500 <em>seguidores</em></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="mark">Mariela Fraijo</span>
+  <span>Portafolio / Edición 2026</span>
+  <span>México</span>
+</footer>
+
+<!-- FLOATING WA -->
+<a class="fab" href="https://wa.me/5216657999091" target="_blank" rel="noopener" aria-label="WhatsApp Mariela Fraijo">
+  <span class="pulse"></span>
+  WhatsApp · 665 799 9091
+</a>
+
+<script>
+  // Scroll reveal — reveal already-visible elements immediately, observe the rest
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{threshold:0.08, rootMargin:"0px 0px -40px 0px"});
+  requestAnimationFrame(()=>{
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    document.querySelectorAll('.reveal').forEach(el=>{
+      const r = el.getBoundingClientRect();
+      if(r.top < vh * 0.95){ el.classList.add('in'); }
+      else { io.observe(el); }
+    });
+  });
+</script>
+
+</body>
+</html>
